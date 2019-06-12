@@ -1,12 +1,12 @@
 # Idéias de aplicação
 
-## App de caronas
+## App de caronas - UFABCAR
 
 Conecta usuários com carro que querem oferecer carona, com usuários que precisam de carona para destinos em comum.
 
 ### Contexto (motivação)
 
-Com o atual problemas de fretados na UFABC, torna-se ainda mais importante aplicativos que facilitem a carona solidária (carpool).
+Com os atuais problemas de fretados na UFABC, torna-se ainda mais importante a presença de aplicativos que facilitem a carona solidária (carpool) e estimulem a atividade nos arredores dos campi.
 
 ### Problema
 
@@ -18,11 +18,11 @@ O nosso app teria como objetivo resolver o problema de caronas específico da UF
 
 ### Proposta
 
-Criar um app que conecte quem quer oferecer carona, com quem precisa de carona. O app verificaria quem está indo para rotas próximas, e faria o "match" de usuários. Quem oferece a carona pode decidir quantas pessoas quer pegar no caminho.
+Criar um app que conecte quem quer oferecer carona, com quem precisa de carona. O app verificaria quem está indo para rotas próximas, e faria o "match" de usuários. Quem oferece a carona pode decidir quantas pessoas quer pegar no caminho e se gostaria de ajuda de custo.
 
 ### Justificativa
 
-Como o app seria exclusivamente para solucionar o problema de transporte na UFABC, podemos atingir um grupo muito específico de usuários, não precisando concorrer com grandes aplicativos.
+Como o app seria exclusivamente para solucionar o problema de transporte na UFABC, podemos atingir um grupo muito específico de usuários, não precisando concorrer com grandes aplicativos e contribuindo para a mobilidade entre os principais pontos frequentados pelos estudantes.
 
 ## App de doações
 
