@@ -22,4 +22,32 @@ Criar um app que conecte quem quer oferecer carona, com quem precisa de carona. 
 
 ### Justificativa
 
+Como o app seria exclusivamente para solucionar o problema de transporte na UFABC, podemos atingir um grupo muito específico de usuários, não precisando concorrer com grandes aplicativos.
 
+## App de doações
+
+App para pessoas que querem doar objetos pessoais, e para pessoas que procuram por itens.
+
+### Contexto (motivação)
+
+O app tem como objetivo diminuir o consumismo exagerado que afeta nossa atual sociedade, provendo uma plataforma onde pessoas podem oferecer objetos, roupas, etc., que não tem mais utilidade, para pessoas que realmente irão usar, assim criando uma cultura de doação.
+
+### Problema
+
+O problema do consumismo, e de como nós acumulamos objetos inutilizados em nossas casas.
+
+### Proposta
+
+* Uma pessoa pode anunciar seu item para doação
+* Uma pessoa pode procurar itens em doação para receber, a partir de um sistema onde doar seus itens lhe dão créditos para poder receber itens de doação
+* A plataforma permitiria a comunicação entre esses dois
+
+### Justificativa
+
+
+## App de doação de animais
+
+### Contexto
+### Problema
+### Proposta
+### Justificativa
