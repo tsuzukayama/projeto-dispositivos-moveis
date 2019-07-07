@@ -5,15 +5,74 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     tools:context=".MainActivity">
 
-    <TextView
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
+        <ImageView
+            android:id="@+id/app_logo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ic_steering_wheel"
+            android:layout_marginBottom="20dp"/>
+
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/login_text"
+            android:layout_below="@+id/app_logo"
+            android:text="@string/login_text"
+            android:textSize="@dimen/text_size"/>
+
+        <EditText
+            android:id="@+id/user_input"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/login_text"
+            android:textSize="@dimen/input_text_size"
+            android:textAlignment="center"
+            android:layout_marginVertical="10dp"
+            android:hint="@string/login_user_placeholder"/>
+
+        <EditText
+            android:id="@+id/password_input"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/user_input"
+            android:textAlignment="center"
+            android:textSize="@dimen/input_text_size"
+            android:layout_marginVertical="10dp"
+            android:hint="@string/login_password_placeholder"/>
+
+        <Button
+            android:id="@+id/login_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login_confirm_button"
+            android:layout_below="@+id/password_input"
+            android:layout_centerHorizontal="true"
+            android:background="@color/colorDarkPrimary"
+            android:textColor="@color/white"
+            android:textSize="@dimen/input_text_size"/>
+
+        <TextView
+            android:id="@+id/create_user_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login_create_user"
+            android:layout_below="@id/login_button"
+            android:layout_centerHorizontal="true"
+            android:textSize="@dimen/text_size"
+            android:layout_marginTop="40dp"
+            android:textColor="@color/colorHyperlink"/>
+
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
