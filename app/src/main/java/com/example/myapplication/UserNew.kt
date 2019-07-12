@@ -21,7 +21,12 @@ class UserNew : AppCompatActivity() {
         createUserButton = findViewById(R.id.create_user_button)
 
         createUserButton.setOnClickListener{
+            validatesUser()
             Toast.makeText(App.context, "Button clicked", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    fun validatesUser() {
+
     }
 }
