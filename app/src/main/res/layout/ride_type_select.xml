@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:stretchColumns="1">
+
+    <Button
+            android:text="Oferecer carona"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/colorDarkPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:id="@+id/oferecer_carona_button"/>
+
+    <Button
+            android:text="Pegar carona"
+            android:background="@color/colorDarkPrimary"
+            android:textColor="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:id="@+id/pegar_carona_button"/>
+</TableLayout>
