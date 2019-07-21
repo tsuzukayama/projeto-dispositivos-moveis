@@ -11,7 +11,7 @@
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:id="@+id/oferecer_carona_button"/>
+            android:id="@+id/ride_new_button"/>
 
     <Button
             android:text="Pegar carona"
@@ -20,5 +20,5 @@
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:id="@+id/pegar_carona_button"/>
+            android:id="@+id/ride_fetch_button"/>
 </TableLayout>

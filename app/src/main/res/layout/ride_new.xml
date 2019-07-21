@@ -20,7 +20,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:text="Partida"
+                android:hint="Partida"
                 android:ems="10"
                 android:layout_marginVertical="10dp"
                 android:id="@+id/partida_input"/>
@@ -28,7 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:text="Destino"
+                android:hint="Destino"
                 android:ems="10"
                 android:layout_marginVertical="10dp"
                 android:id="@+id/destino_input"/>
@@ -36,15 +36,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
-                android:text="Lugares"
+                android:hint="Lugares"
                 android:ems="10"
                 android:layout_marginVertical="10dp"
                 android:id="@+id/lugares_input"/>
+
         <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
                 android:gravity="start|top"
+                android:hint="Observações"
                 android:ems="10"
                 android:layout_marginVertical="10dp"
                 android:id="@+id/obs_input"/>

@@ -27,6 +27,18 @@
             android:label="Novo usuário"
             android:windowSoftInputMode="adjustResize">
         </activity>
+
+        <activity
+                android:name=".rides.RideTypeSelect"
+                android:label="Escolher tipo"
+                android:windowSoftInputMode="adjustResize">
+        </activity>
+
+        <activity
+                android:name=".rides.RideNew"
+                android:label="Nova carona"
+                android:windowSoftInputMode="adjustResize">
+        </activity>
     </application>
 
 </manifest>
