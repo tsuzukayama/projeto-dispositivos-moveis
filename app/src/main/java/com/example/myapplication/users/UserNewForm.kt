@@ -3,19 +3,15 @@ package com.example.myapplication.users
 import android.widget.EditText
 import com.example.myapplication.BaseForm
 
-class UserNewForm: BaseForm {
-    var usernameInput: EditText
-    var passwordInput: EditText
+class UserNewForm(
+    var usernameInput: EditText,
+    var passwordInput: EditText,
     var passwordConfirmationInput: EditText
+): BaseForm(){
 
-    constructor(username: EditText, password: EditText, password_confirmation: EditText) {
-        this.usernameInput = username
-        this.passwordInput = password
-        this.passwordConfirmationInput = password_confirmation
-    }
-
-    fun isValid(): Boolean {
-        if (usernameInput.text == null || usernameInput.text.toString().length < 10)
+    override fun isValid(): Boolean {
+        errors = HashMap()
+        if (usernameInput.text == null || usernameInput.text.toString().length < 3)
             errors[usernameInput.id] = "Username error"
         if (passwordInput.text == null || passwordInput.text.toString().length < 6)
             errors[passwordInput.id] = "Password error"
@@ -24,13 +20,11 @@ class UserNewForm: BaseForm {
         return errors.isEmpty()
     }
 
-    fun values(): UserCreateAPI {
-        return UserCreateAPI(
+    fun values(): UserService.UserCreateAPI {
+        return UserService.UserCreateAPI(
             usernameInput.text.toString(),
             passwordInput.text.toString(),
             passwordConfirmationInput.text.toString()
         )
     }
 }
-
-data class UserCreateAPI(val username: String, val password: String, val password_confirmation: String)

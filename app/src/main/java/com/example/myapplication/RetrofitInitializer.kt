@@ -1,16 +1,21 @@
 package com.example.myapplication
 
+import com.example.myapplication.session.SessionService
 import com.example.myapplication.users.UserService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitInitializer {
     private val retrofit = Retrofit.Builder()
-                            .baseUrl("http://192.168.15.17:3000/")
+                            .baseUrl("https://projeto-carona-api.herokuapp.com/")
                             .addConverterFactory(GsonConverterFactory.create())
                             .build()
 
     fun userService(): UserService {
         return retrofit.create(UserService::class.java)
+    }
+
+    fun sessionService(): SessionService {
+        return retrofit.create(SessionService::class.java)
     }
 }
