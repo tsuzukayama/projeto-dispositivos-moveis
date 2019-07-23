@@ -28,11 +28,16 @@ class RideAdapter : BaseAdapter() {
             Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val localView = convertView ?: inflater.inflate(R.layout.ride_list_item, null)
         val ride = RideDAO.instance.getItemAt(position)
+
         val departure = localView.findViewById<TextView>(R.id.ride_departure)
         val destination = localView.findViewById<TextView>(R.id.ride_destination)
+        val driver = localView.findViewById<TextView>(R.id.ride_driver)
+        val capacity = localView.findViewById<TextView>(R.id.ride_capacity)
 
         departure.text = ride.departure
         destination.text = ride.destination
+        driver.text = ride.driver?.name
+        capacity.text = ride.capacity.toString()
 
         return localView
     }
