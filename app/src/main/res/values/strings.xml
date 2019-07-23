@@ -2,7 +2,9 @@
     <string name="app_name">My Application</string>
     <string name="login_text">Já possui cadastro? Faça seu login</string>
     <string name="login_confirm_button">Logar</string>
-    <string name="login_create_user"><u>Não possuo cadastro</u></string>
+    <string name="login_create_user">
+        <u>Não possuo cadastro</u>
+    </string>
 
     <string name="input_user_placeholder">Usuário</string>
     <string name="input_password_placeholder">Senha</string>
@@ -10,4 +12,5 @@
 
     <string name="user_new_subtitle">Nos informe alguns dados para fazermos seu cadastro</string>
     <string name="user_new_button">Criar</string>
+    <string name="title_activity_ride_details_passenger">Map</string>
 </resources>
