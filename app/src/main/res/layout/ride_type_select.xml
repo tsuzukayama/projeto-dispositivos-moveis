@@ -20,5 +20,5 @@
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:id="@+id/ride_fetch_button"/>
+            android:id="@+id/ride_list_button"/>
 </TableLayout>

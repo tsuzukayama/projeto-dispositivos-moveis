@@ -39,6 +39,11 @@
                 android:label="Nova carona"
                 android:windowSoftInputMode="adjustResize">
         </activity>
+        <activity
+                android:name=".rides.RideList"
+                android:label="Lista de caronas"
+                android:windowSoftInputMode="adjustResize">
+        </activity>
     </application>
 
 </manifest>
