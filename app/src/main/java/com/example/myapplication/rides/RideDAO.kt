@@ -5,7 +5,6 @@ import com.example.myapplication.users.User
 
 object RideDAO {
     private var rides: MutableList<Ride> = ArrayList()
-    val instance = this
 
     init {
         loadTestData()
