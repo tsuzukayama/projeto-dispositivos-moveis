@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp">
+    <TextView
+            android:id="@+id/ride_driver"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textStyle="bold"
+            android:hint="Motorista"/>
+    <TextView
+            android:id="@+id/ride_capacity"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_alignParentRight="true"
+            android:hint="Vagas"/>
+
+    <TextView
+            android:id="@+id/ride_departure_label"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_below="@id/ride_driver"
+            android:hint="Partida: "/>
+
+    <TextView
+            android:id="@+id/ride_departure"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textStyle="bold"
+            android:layout_below="@id/ride_driver"
+            android:layout_toEndOf="@id/ride_departure_label"
+            android:hint="Partida"/>
+    <TextView
+            android:id="@+id/ride_destination_label"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_below="@id/ride_departure_label"
+            android:hint="Destino: "/>
+    <TextView
+            android:id="@+id/ride_destination"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textStyle="bold"
+
+            android:layout_below="@id/ride_departure_label"
+            android:layout_toEndOf="@id/ride_destination_label"
+            android:hint="Destino"/>
+</RelativeLayout>
