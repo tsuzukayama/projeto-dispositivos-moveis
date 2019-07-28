@@ -33,7 +33,7 @@
             android:textSize="@dimen/text_size"/>
 
         <EditText
-            android:id="@+id/user_input"
+            android:id="@+id/login_user_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/login_text"
@@ -47,11 +47,12 @@
             android:id="@+id/password_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/user_input"
+            android:layout_below="@id/login_user_input"
             android:textAlignment="center"
             android:textSize="@dimen/input_text_size"
             android:layout_marginVertical="10dp"
-            android:hint="@string/input_password_placeholder"/>
+            android:hint="@string/input_password_placeholder"
+            android:inputType="textPassword"/>
 
         <Button
             android:id="@+id/login_button"
@@ -74,6 +75,21 @@
             android:textSize="@dimen/text_size"
             android:layout_marginTop="40dp"
             android:textColor="@color/colorHyperlink"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/lightBlack"
+        android:visibility="gone"
+        android:id="@+id/loading">
+
+        <ProgressBar
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"/>
 
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
