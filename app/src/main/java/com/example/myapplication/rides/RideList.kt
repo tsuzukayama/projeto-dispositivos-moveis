@@ -29,7 +29,7 @@ class RideList :AppCompatActivity() {
 
         listView.choiceMode = ListView.CHOICE_MODE_MULTIPLE_MODAL
 
-        listView.setOnItemClickListener { adapterView, view, i, l ->
+        listView.setOnItemClickListener { _, _, _, _ ->
             val intent = Intent(App.context, RideDetailsPassenger::class.java)
             startActivity(intent)
         }
