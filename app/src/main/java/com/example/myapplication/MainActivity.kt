@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.*
+import com.example.myapplication.rides.RideTypeSelect
 import com.example.myapplication.session.SessionDAO
 import com.example.myapplication.session.SessionService
 import com.example.myapplication.users.UserNew
@@ -49,7 +50,7 @@ class MainActivity : AppCompatActivity() {
                 object: Callback<Any> {
                     override fun onResponse(call: Call<Any>, response: Response<Any>) {
                         if(response.isSuccessful) {
-                            startActivity(Intent(App.context, UserNew::class.java))
+                            startActivity(Intent(App.context, RideTypeSelect::class.java))
                             Log.i("teaf error", "rest")
                         } else {
                             loading.visibility = View.INVISIBLE
