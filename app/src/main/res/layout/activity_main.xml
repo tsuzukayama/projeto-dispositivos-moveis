@@ -83,6 +83,7 @@
         android:layout_height="match_parent"
         android:background="@color/lightBlack"
         android:visibility="gone"
+        android:forceHasOverlappingRendering="true"
         android:id="@+id/loading">
 
         <ProgressBar

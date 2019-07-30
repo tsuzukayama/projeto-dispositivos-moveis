@@ -41,27 +41,34 @@ class MainActivity : AppCompatActivity() {
 
         loginButton.setOnClickListener{
 
+            showLoading()
+
             val username = findViewById<EditText>(R.id.login_user_input).text.toString()
             val password = findViewById<EditText>(R.id.password_input).text.toString()
 
-            loading.visibility = View.VISIBLE
             SessionDAO.add(
                 SessionService.SessionCreateAPI(username, password),
                 object: Callback<Any> {
                     override fun onResponse(call: Call<Any>, response: Response<Any>) {
                         if(response.isSuccessful) {
-                            startActivity(Intent(App.context, RideTypeSelect::class.java))
-                            Log.i("teaf error", "rest")
                         } else {
-                            loading.visibility = View.INVISIBLE
-                            Log.i("gdsbvsd error", "gdsvds")
                         }
+                        startActivity(Intent(App.context, RideTypeSelect::class.java))
+                        hideLoading()
                     }
                     override fun onFailure(call: Call<Any>, t: Throwable?) {
-                        loading.visibility = View.INVISIBLE
                         Log.e("onFailure error", t?.message)
+                        hideLoading()
                     }
                 })
         }
+    }
+
+    fun hideLoading() {
+        loading.visibility = View.INVISIBLE
+    }
+
+    fun showLoading() {
+        loading.visibility = View.VISIBLE
     }
 }
