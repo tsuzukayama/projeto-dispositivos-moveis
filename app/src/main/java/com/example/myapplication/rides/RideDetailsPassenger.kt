@@ -10,6 +10,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.PolylineOptions
 
 class RideDetailsPassenger : AppCompatActivity(), OnMapReadyCallback {
 
@@ -37,8 +38,31 @@ class RideDetailsPassenger : AppCompatActivity(), OnMapReadyCallback {
         mMap = googleMap
 
         // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 12f))
+        val sydney = LatLng(10.0, 10.0)
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 8f))
+
+        mMap.addMarker(
+            MarkerOptions()
+                .position(LatLng(10.0, 10.0))
+                .title("Hello world")
+        )
+
+        mMap.addMarker(
+            MarkerOptions()
+                .position(LatLng(12.0, 10.0))
+                .title("Hello world")
+        )
+
+        val color = 0xffF57F17
+
+        val polyline1 = googleMap.addPolyline(
+            PolylineOptions()
+
+                .clickable(true)
+                .add(
+                    LatLng(12.0, 10.0),
+                    LatLng(10.0, 10.0)
+                )
+        ).setColor(color.toInt())
     }
 }
