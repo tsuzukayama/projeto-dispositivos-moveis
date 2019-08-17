@@ -3,12 +3,14 @@ package com.example.myapplication
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.se.omapi.Session
 import android.util.Log
 import android.view.View
 import android.widget.*
-import com.example.myapplication.rides.RideTypeSelect
+import com.example.myapplication.rides.view.RideTypeSelect
 import com.example.myapplication.session.SessionDAO
 import com.example.myapplication.session.SessionService
+import com.example.myapplication.users.User
 import com.example.myapplication.users.UserNew
 import retrofit2.Call
 import retrofit2.Callback
@@ -48,15 +50,15 @@ class MainActivity : AppCompatActivity() {
 
             SessionDAO.add(
                 SessionService.SessionCreateAPI(username, password),
-                object: Callback<Any> {
-                    override fun onResponse(call: Call<Any>, response: Response<Any>) {
+                object: Callback<User> {
+                    override fun onResponse(call: Call<User>, response: Response<User>) {
                         if(response.isSuccessful) {
-                        } else {
+                            response.body()?.let { it1 -> SessionDAO.instance.setUser(it1) }
+                            startActivity(Intent(App.context, RideTypeSelect::class.java))
                         }
-                        startActivity(Intent(App.context, RideTypeSelect::class.java))
                         hideLoading()
                     }
-                    override fun onFailure(call: Call<Any>, t: Throwable?) {
+                    override fun onFailure(call: Call<User>, t: Throwable?) {
                         Log.e("onFailure error", t?.message)
                         hideLoading()
                     }

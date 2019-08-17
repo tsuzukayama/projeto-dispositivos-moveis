@@ -1,22 +1,24 @@
-package com.example.myapplication.rides
+package com.example.myapplication.rides.view
 
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
 import com.example.myapplication.R
+
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.PolylineOptions
 
-class RideDetailsDriver : AppCompatActivity(), OnMapReadyCallback {
+class RideDetailsPassenger : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.ride_details_driver)
+        setContentView(R.layout.ride_details_passenger)
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
@@ -36,8 +38,31 @@ class RideDetailsDriver : AppCompatActivity(), OnMapReadyCallback {
         mMap = googleMap
 
         // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 12f))
+        val sydney = LatLng(10.0, 10.0)
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 8f))
+
+        mMap.addMarker(
+            MarkerOptions()
+                .position(LatLng(10.0, 10.0))
+                .title("Hello world")
+        )
+
+        mMap.addMarker(
+            MarkerOptions()
+                .position(LatLng(12.0, 10.0))
+                .title("Hello world")
+        )
+
+        val color = 0xffF57F17
+
+        val polyline1 = googleMap.addPolyline(
+            PolylineOptions()
+
+                .clickable(true)
+                .add(
+                    LatLng(12.0, 10.0),
+                    LatLng(10.0, 10.0)
+                )
+        ).setColor(color.toInt())
     }
 }

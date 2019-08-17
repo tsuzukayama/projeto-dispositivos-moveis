@@ -37,12 +37,12 @@
                 android:value="@integer/google_play_services_version" />
 
         <activity
-                android:name=".rides.RideDetailsPassenger"
+                android:name=".rides.view.RideDetailsPassenger"
                 android:label="Detalhes da carona"
                 android:windowSoftInputMode="adjustResize">
         </activity>
         <activity
-                android:name=".rides.RideDetailsDriver"
+                android:name=".rides.view.RideDetailsDriver"
                 android:label="Detalhes da carona"
                 android:windowSoftInputMode="adjustResize">
         </activity>
@@ -61,17 +61,17 @@
                 android:windowSoftInputMode="adjustResize">
         </activity>
         <activity
-                android:name=".rides.RideTypeSelect"
+                android:name=".rides.view.RideTypeSelect"
                 android:label="Escolher tipo"
                 android:windowSoftInputMode="adjustResize">
         </activity>
         <activity
-                android:name=".rides.RideNew"
+                android:name=".rides.view.RideNew"
                 android:label="Nova carona"
                 android:windowSoftInputMode="adjustResize">
         </activity>
         <activity
-                android:name=".rides.RideList"
+                android:name=".rides.view.RideList"
                 android:label="Lista de caronas"
                 android:windowSoftInputMode="adjustResize">
         </activity>

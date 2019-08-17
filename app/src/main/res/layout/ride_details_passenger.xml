@@ -10,7 +10,7 @@
               android:layout_width="match_parent"
               android:layout_height="400dp"
               android:id="@+id/map"
-              tools:context=".rides.RideDetailsPassenger"
+              tools:context=".rides.view.RideDetailsPassenger"
               android:name="com.google.android.gms.maps.SupportMapFragment"/>
     <TextView
             android:textSize="18dp"
