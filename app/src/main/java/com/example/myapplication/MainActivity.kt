@@ -7,11 +7,14 @@ import android.se.omapi.Session
 import android.util.Log
 import android.view.View
 import android.widget.*
+import com.example.myapplication.rides.view.RideDetailsDriver
+import com.example.myapplication.rides.view.RideDetailsPassenger
 import com.example.myapplication.rides.view.RideTypeSelect
 import com.example.myapplication.session.SessionDAO
 import com.example.myapplication.session.SessionService
 import com.example.myapplication.users.User
 import com.example.myapplication.users.UserNew
+import com.example.myapplication.users.UserService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -54,7 +57,44 @@ class MainActivity : AppCompatActivity() {
                     override fun onResponse(call: Call<User>, response: Response<User>) {
                         if(response.isSuccessful) {
                             response.body()?.let { it1 -> SessionDAO.instance.setUser(it1) }
-                            startActivity(Intent(App.context, RideTypeSelect::class.java))
+                            var loggedUser = SessionDAO.getLoggedUser()
+                            var id = loggedUser?.id ?: 0
+
+                            var call = RetrofitInitializer().userService().getActiveRide(id)
+
+                            call.enqueue(object: Callback<UserService.CurrentRide> {
+                                override fun onResponse(call: Call<UserService.CurrentRide>, response: Response<UserService.CurrentRide>) {
+                                    response.body().let {
+
+                                        when (it?.user_role) {
+                                            "driver"-> {
+                                                val intent = Intent(App.context, RideDetailsDriver::class.java)
+
+                                                val bundle = Bundle()
+                                                bundle.putInt("id", it.ride.id)
+                                                intent.putExtras(bundle)
+                                                startActivity(intent, null)
+                                            }
+                                            "passenger" -> {
+                                                val intent = Intent(App.context, RideDetailsPassenger::class.java)
+
+                                                val bundle = Bundle()
+                                                bundle.putInt("id", it.ride.id)
+                                                intent.putExtras(bundle)
+                                                startActivity(intent, null)
+                                            }
+                                            else -> {
+                                                startActivity(Intent(App.context, RideTypeSelect::class.java))
+                                            }
+                                        }
+
+                                    }
+                                }
+
+                                override fun onFailure(call: Call<UserService.CurrentRide>, t: Throwable) {
+                                    Log.d("RideDAO", "error")
+                                }
+                            })
                         }
                         hideLoading()
                     }
