@@ -34,9 +34,8 @@ class RideList :AppCompatActivity() {
                 response.body().let {
 
                     if (it != null) {
-                        RideDAO.instance.addAll(it)
                         RideAdapter().apply {
-                            rides = ArrayList(RideDAO.instance.getAll())
+                            rides = it as ArrayList<Ride>
                             recyclerView.adapter = this
                             (recyclerView.adapter as RideAdapter).notifyDataSetChanged()
 

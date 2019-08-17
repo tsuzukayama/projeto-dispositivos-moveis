@@ -7,9 +7,11 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.example.myapplication.App
 import com.example.myapplication.MainActivity
 import com.example.myapplication.R
+import com.example.myapplication.rides.model.Ride
 import com.example.myapplication.rides.model.RideDAO
 import com.example.myapplication.rides.model.RideNewForm
 import com.example.myapplication.session.SessionDAO
@@ -42,16 +44,22 @@ class RideNew : AppCompatActivity() {
             findViewById(R.id.ride_new_destination_input)
         )
 
-        val createRideCallback: Callback<Any> = object: Callback<Any> {
-            override fun onResponse(call: Call<Any>, response: Response<Any>) {
+        val createRideCallback: Callback<Ride> = object: Callback<Ride> {
+            override fun onResponse(call: Call<Ride>, response: Response<Ride>) {
                 if(response.isSuccessful) {
-                    Toast.makeText(App.context, "Carona criada com sucesso", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(App.context, MainActivity::class.java))
+                    response.body()?.id?.let {
+                        Toast.makeText(App.context, "Carona criada com sucesso", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(App.context, RideDetailsDriver::class.java)
+                        val bundle = Bundle()
+                        bundle.putInt("id", it)
+                        intent.putExtras(bundle)
+                        startActivity(intent, null)
+                    }
                 } else {
                     Toast.makeText(App.context, "Erro ao criar carona", Toast.LENGTH_SHORT).show()
                 }
             }
-            override fun onFailure(call: Call<Any>, t: Throwable) {
+            override fun onFailure(call: Call<Ride>, t: Throwable) {
                 Log.e("onFailure error", t?.message)
             }
         }
@@ -60,8 +68,6 @@ class RideNew : AppCompatActivity() {
 
             if(rideNewForm.isValid()) {
                 RideDAO.add(rideNewForm.values(), createRideCallback)
-                val intent = Intent(App.context, RideDetailsDriver::class.java)
-                startActivity(intent)
             }
             else rideNewForm.errors.forEach{(id, error) -> findViewById<EditText>(id).error = error}
 

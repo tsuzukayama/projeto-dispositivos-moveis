@@ -1,9 +1,7 @@
 package com.example.myapplication.rides.model
 
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface RideService {
 
@@ -17,6 +15,9 @@ interface RideService {
     @GET("/rides")
     fun getAll(): Call<List<Ride>>
 
+    @GET("/rides/{id}")
+    fun get(@Path("id") id: Int): Call<Ride>
+
     @POST("/rides")
-    fun create(@Body params: RideCreateAPI):  Call<Any>
+    fun create(@Body params: RideCreateAPI):  Call<Ride>
 }

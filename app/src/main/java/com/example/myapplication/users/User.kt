@@ -2,7 +2,8 @@ package com.example.myapplication.users
 
 class User (
     var id: Int,
-    var name: String,
+    var email: String,
+    var phone: String,
     var username: String,
     var password_digest: String,
     var created_at: String,

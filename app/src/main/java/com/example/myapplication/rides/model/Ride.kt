@@ -10,6 +10,7 @@ class Ride (
     var destination: String,
     var origin: String,
     var capacity: Int,
+    var passengers: ArrayList<User>,
     var created_at: String,
     var updated_at: String
 )

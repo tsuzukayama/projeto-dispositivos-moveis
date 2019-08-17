@@ -1,6 +1,7 @@
 package com.example.myapplication.rides.view
 
 import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,11 +36,15 @@ class RideAdapter : RecyclerView.Adapter<RideAdapter.RideViewHolder>() {
 
         holder.departure.text = rides[position].origin
         holder.destination.text = rides[position].destination
-        holder.driver.text = rides[position].driver.name
+        holder.driver.text = rides[position].driver.username
         holder.capacity.text = rides[position].capacity.toString()
 
         holder.itemView.setOnClickListener {
             val intent = Intent(App.context, RideDetailsPassenger::class.java)
+
+            val bundle = Bundle()
+            bundle.putInt("id", holder.ride.id)
+            intent.putExtras(bundle)
             ContextCompat.startActivity(it.context, intent, null)
         }
     }

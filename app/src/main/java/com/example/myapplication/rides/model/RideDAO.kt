@@ -11,7 +11,7 @@ object RideDAO {
     val instance = this
 
 
-    fun add(params: RideService.RideCreateAPI, callback: Callback<Any>) {
+    fun add(params: RideService.RideCreateAPI, callback: Callback<Ride>) {
         RetrofitInitializer().rideService().create(params)
             .enqueue(callback)
     }
