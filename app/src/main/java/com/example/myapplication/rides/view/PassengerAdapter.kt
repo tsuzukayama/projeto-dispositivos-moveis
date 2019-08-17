@@ -29,7 +29,7 @@ class PassengerAdapter : RecyclerView.Adapter<PassengerAdapter.PassengerViewHold
         holder.passenger = passengers[position]
 
         holder.email.text = passengers[position].email
-        holder.phone.text = passengers[position].phone
+        holder.phone.text = passengers[position].telephone
     }
 
     override fun getItemCount(): Int {
