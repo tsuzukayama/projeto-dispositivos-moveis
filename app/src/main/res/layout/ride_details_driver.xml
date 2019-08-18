@@ -28,12 +28,12 @@
             android:layout_height="48dp"
             app:layout_constraintBottom_toBottomOf="parent">
         <Button
-                android:text="Inicar"
+                android:text="Iniciar"
                 android:background="@color/colorDarkPrimary"
                 android:textColor="@color/white"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:id="@+id/init_ride_button"/>
+                android:id="@+id/start_finish_ride_button"/>
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

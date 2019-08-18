@@ -20,4 +20,10 @@ interface RideService {
 
     @POST("/rides")
     fun create(@Body params: RideCreateAPI):  Call<Ride>
+
+    @POST("/rides/{id}/start")
+    fun startRide(@Path("id") id: Int): Call<Any?>
+
+    @POST("/rides/{id}/end")
+    fun finishRide(@Path("id") id: Int): Call<Any?>
 }

@@ -12,5 +12,6 @@ class Ride (
     var capacity: Int,
     var passengers: ArrayList<User>,
     var created_at: String,
-    var updated_at: String
+    var updated_at: String,
+    var status: String
 )

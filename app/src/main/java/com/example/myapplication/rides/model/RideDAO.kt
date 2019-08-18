@@ -31,4 +31,14 @@ object RideDAO {
     fun addAll(ridesToAdd: List<Ride>) {
         rides.addAll(ridesToAdd)
     }
+
+    fun startRide(id: Int, callback: Callback<Any?>) {
+        RetrofitInitializer().rideService().startRide(id)
+            .enqueue(callback)
+    }
+
+    fun finishRide(id: Int, callback: Callback<Any?>) {
+        RetrofitInitializer().rideService().finishRide(id)
+            .enqueue(callback)
+    }
 }
