@@ -3,30 +3,95 @@ package com.example.myapplication.rides.view
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import com.example.myapplication.App
-import com.example.myapplication.MainActivity
 import com.example.myapplication.R
 import com.example.myapplication.rides.model.Ride
 import com.example.myapplication.rides.model.RideDAO
 import com.example.myapplication.rides.model.RideNewForm
 import com.example.myapplication.session.SessionDAO
-import com.example.myapplication.users.UserNewForm
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-
+import android.widget.ArrayAdapter
+import android.widget.Spinner
+import android.widget.AdapterView
+import android.widget.AdapterView.OnItemSelectedListener
 
 class RideNew : AppCompatActivity() {
 
     private lateinit var rideNewButton: Button
+
+    private var selectedDestination: String = ""
+    private var selectedOrigin: String = ""
+
+    private lateinit var rideNewForm: RideNewForm
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.ride_new)
+
+        val destinationSpinner = findViewById<Spinner>(R.id.ride_new_destination_spinner)
+        val originSpinner = findViewById<Spinner>(R.id.ride_new_origin_spinner)
+
+        val locations = resources.getStringArray(R.array.locations_array)
+        selectedDestination = locations.first()
+        selectedOrigin = locations.first()
+
+        // Create an ArrayAdapter using the string array and a default spinner
+        val destinationAdapter = ArrayAdapter<String>(
+            this,
+            android.R.layout.simple_spinner_dropdown_item, locations.toList()
+        )
+
+        val originAdapter = ArrayAdapter<String>(
+            this,
+            android.R.layout.simple_spinner_dropdown_item, locations.toList()
+        )
+
+        // Specify the layout to use when the list of choices appears
+        destinationAdapter
+            .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        originAdapter
+            .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        // Apply the adapter to the spinner
+        destinationSpinner.adapter = destinationAdapter
+        originSpinner.adapter = originAdapter
+
+        destinationSpinner.onItemSelectedListener = object : OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>, view: View,
+                position: Int, id: Long
+            ) {
+                selectedDestination = parent.getItemAtPosition(position).toString()
+                rideNewForm.destination = selectedDestination
+                Log.v("item", parent.getItemAtPosition(position) as String)
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+
+            }
+        }
+
+        originSpinner.onItemSelectedListener = object : OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>, view: View,
+                position: Int, id: Long
+            ) {
+                selectedOrigin = parent.getItemAtPosition(position).toString()
+                rideNewForm.origin = selectedOrigin
+                Log.v("item", parent.getItemAtPosition(position) as String)
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+
+            }
+        }
     }
 
     override fun onStart() {
@@ -37,11 +102,11 @@ class RideNew : AppCompatActivity() {
         val loggedUser = SessionDAO.instance.getLoggedUser()
 
         val userId = loggedUser?.id ?: 0
-        val rideNewForm = RideNewForm(
+        rideNewForm = RideNewForm(
             userId,
             findViewById(R.id.ride_new_capacity_input),
-            findViewById(R.id.ride_new_departure_input),
-            findViewById(R.id.ride_new_destination_input)
+            selectedOrigin,
+            selectedDestination
         )
 
         val createRideCallback: Callback<Ride> = object: Callback<Ride> {

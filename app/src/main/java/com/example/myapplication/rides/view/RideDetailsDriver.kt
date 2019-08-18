@@ -19,6 +19,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.PolylineOptions
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -63,6 +64,40 @@ class RideDetailsDriver : AppCompatActivity(), OnMapReadyCallback {
 
                     if (it != null) {
                         ride = it
+
+                        val locations = resources.getStringArray(R.array.locations_array)
+                        val latitudes = resources.getStringArray(R.array.locations_lat)
+                        val longitudes = resources.getStringArray(R.array.locations_long)
+
+                        val destinationIndex = locations.indexOfFirst { location -> location == ride.destination }
+                        val originIndex = locations.indexOfFirst { location -> location == ride.origin }
+
+                        val destinationLat = latitudes[destinationIndex].toDouble()
+                        var destinationLong = longitudes[destinationIndex].toDouble()
+
+                        val originLat = latitudes[originIndex].toDouble()
+                        val originLong = longitudes[originIndex].toDouble()
+
+                        // Add a marker in Sydney and move the camera
+                        val destination = LatLng(destinationLat, destinationLong)
+                        val origin = LatLng(originLat, originLong)
+                        mMap.addMarker(MarkerOptions().position(destination).title("Marker in destination"))
+                        mMap.addMarker(MarkerOptions().position(origin).title("Marker in origin"))
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(destination, 12f))
+
+                        val color = 0xffF57F17
+
+                        val polyline1 = mMap.addPolyline(
+                            PolylineOptions()
+
+                                .clickable(true)
+                                .add(
+                                    destination,
+                                    origin
+                                )
+                        ).setColor(color.toInt())
+
+
                         when (ride.status) {
                             "created" -> {
                                 startFinishRideButton.text = "Iniciar"
@@ -103,10 +138,6 @@ class RideDetailsDriver : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
-        // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 12f))
     }
 
     val startRideCallback: Callback<Any?> = object: Callback<Any?> {

@@ -1,6 +1,7 @@
 package com.example.myapplication.rides.model
 
 import com.example.myapplication.RetrofitInitializer
+import com.example.myapplication.users.User
 import retrofit2.Callback
 import retrofit2.http.POST
 
@@ -39,6 +40,12 @@ object RideDAO {
 
     fun finishRide(id: Int, callback: Callback<Any?>) {
         RetrofitInitializer().rideService().finishRide(id)
+            .enqueue(callback)
+    }
+
+    fun addPassenger(id: Int, userId: Int, callback: Callback<Any>) {
+        val passenger = RideService.addPassengerAPI(userId)
+        RetrofitInitializer().rideService().addPassenger(id, passenger)
             .enqueue(callback)
     }
 }

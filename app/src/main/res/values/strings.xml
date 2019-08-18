@@ -13,4 +13,26 @@
     <string name="user_new_subtitle">Nos informe alguns dados para fazermos seu cadastro</string>
     <string name="user_new_button">Criar</string>
     <string name="title_activity_ride_details_passenger">Map</string>
+
+    <string-array name="locations_array">
+        <item>Santo André</item>
+        <item>São Bernardo do Campo</item>
+        <item>Terminal Leste</item>
+        <item>Terminal SBC</item>
+        <item>Zona Leste</item>
+    </string-array>
+    <string-array name="locations_lat">
+        <item>-23.644308</item>
+        <item>-23.677843</item>
+        <item>10.0</item>
+        <item>12.0</item>
+        <item>10.0</item>
+    </string-array>
+    <string-array name="locations_long">
+        <item>-46.528175</item>
+        <item>-46.563523</item>
+        <item>10.0</item>
+        <item>10.0</item>
+        <item>10.0</item>
+    </string-array>
 </resources>
