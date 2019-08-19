@@ -8,7 +8,7 @@ import retrofit2.http.POST
 import retrofit2.http.Path
 
 interface UserService {
-    data class UserCreateAPI(val username: String, val password: String, val password_confirmation: String)
+    data class UserCreateAPI(val username: String, val email: String, val telephone: String, val password: String, val password_confirmation: String)
 
     data class CurrentRide(val ride: Ride, val user_role: String)
     @POST("/users")

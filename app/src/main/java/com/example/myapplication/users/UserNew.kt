@@ -31,6 +31,8 @@ class UserNew : AppCompatActivity() {
 
         val userNewForm = UserNewForm(
             findViewById(R.id.user_input),
+            findViewById(R.id.email_input),
+            findViewById(R.id.telephone_input),
             findViewById(R.id.password_input),
             findViewById(R.id.confirm_password_input)
         )
