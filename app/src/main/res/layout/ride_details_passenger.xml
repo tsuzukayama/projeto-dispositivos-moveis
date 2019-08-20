@@ -4,6 +4,9 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@+id/alertBox" android:padding="2dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@color/redAlert">
+        <TextView android:id="@+id/alertText" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    </RelativeLayout>
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tools="http://schemas.android.com/tools"
               xmlns:map="http://schemas.android.com/apk/res-auto"
@@ -46,8 +49,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorDarkPrimary"
                 android:id="@+id/ride_details_capacity"
-                android:textSize="18dp"
-                android:text="4"/>
+                android:textSize="18dp"/>
         </LinearLayout>
         <LinearLayout
                 android:layout_marginRight="24dp"
@@ -63,8 +65,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorDarkPrimary"
                     android:id="@+id/ride_details_phone_label"
-                    android:textSize="18dp"
-                    android:text="4444-4444"/>
+                    android:textSize="18dp"/>
         </LinearLayout>
         <LinearLayout
                 android:orientation="vertical"
@@ -73,14 +74,13 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/ride_details_email_label"
                     android:text="Email"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorDarkPrimary"
-                    android:textSize="18dp"
-                    android:text="john.doe@email"/>
+                    android:id="@+id/ride_details_email_label"
+                    android:textSize="18dp"/>
         </LinearLayout>
         </TableRow>
     </TableLayout>

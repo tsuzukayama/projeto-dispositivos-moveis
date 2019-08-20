@@ -1,10 +1,14 @@
 package com.example.myapplication.rides.view
 
+import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.RelativeLayout
 import android.widget.TextView
+import android.widget.Toast
+import com.example.myapplication.App
 import com.example.myapplication.R
 import com.example.myapplication.RetrofitInitializer
 import com.example.myapplication.rides.model.Ride
@@ -31,6 +35,8 @@ class RideDetailsPassenger : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var capacityText: TextView
     private lateinit var phoneText: TextView
     private lateinit var emailText: TextView
+    private lateinit var alertBox: RelativeLayout
+    private lateinit var alertText: TextView
 
     private lateinit var hitchRideButton: TextView
 
@@ -67,6 +73,8 @@ class RideDetailsPassenger : AppCompatActivity(), OnMapReadyCallback {
                         ride = it
                         driverNameText.text = it.driver.username
                         capacityText.text = it.capacity.toString()
+                        phoneText.text = it.driver.telephone
+                        emailText.text = it.driver.email
 
                         val locations = resources.getStringArray(R.array.locations_array)
                         val latitudes = resources.getStringArray(R.array.locations_lat)
@@ -103,12 +111,16 @@ class RideDetailsPassenger : AppCompatActivity(), OnMapReadyCallback {
                         when (ride.status) {
                             "created" -> {
                                 hitchRideButton.text = "Pegar carona"
+                                alertBox.visibility = View.GONE
                             }
                             "started"-> {
                                 hitchRideButton.isEnabled = false
+                                alertText.text = "Carona em andamento"
+
                             }
                             "ended" -> {
                                 hitchRideButton.isEnabled = false
+                                alertText.text = "Carona em finalizada"
                             }
                         }
                     }
@@ -127,6 +139,8 @@ class RideDetailsPassenger : AppCompatActivity(), OnMapReadyCallback {
         phoneText = findViewById(R.id.ride_details_phone_label)
         emailText = findViewById(R.id.ride_details_email_label)
         hitchRideButton = findViewById(R.id.ride_hitchrike_button)
+        alertBox = findViewById(R.id.alertBox)
+        alertText = findViewById(R.id.alertText)
     }
 
     private fun setOnClick() {
@@ -134,7 +148,7 @@ class RideDetailsPassenger : AppCompatActivity(), OnMapReadyCallback {
             var user = SessionDAO.getLoggedUser()
             user?.let { RideDAO.addPassenger(rideId, user.id, addPassengerCallback)}
             hitchRideButton.visibility = View.GONE
-
+            Toast.makeText(App.context, "Adicionado na carona com sucesso!", Toast.LENGTH_SHORT).show()
         }
     }
 

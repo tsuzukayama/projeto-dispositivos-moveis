@@ -9,4 +9,5 @@
     <color name="white">#fff</color>
     <color name="colorHyperlink">#337ab7</color>
     <color name="lightBlack">#55000000</color>
+    <color name="redAlert">#f05e23</color>
 </resources>

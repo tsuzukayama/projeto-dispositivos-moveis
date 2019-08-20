@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitInitializer {
     private val retrofit = Retrofit.Builder()
-                            .baseUrl("http://10.0.2.2:3000")
+                            .baseUrl("https://projeto-carona-api.herokuapp.com/")
                             .addConverterFactory(GsonConverterFactory.create())
                             .build()
 
