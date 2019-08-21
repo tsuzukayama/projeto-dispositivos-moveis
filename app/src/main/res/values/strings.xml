@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">UFABCar</string>
     <string name="login_text">Já possui cadastro? Faça seu login</string>
     <string name="login_confirm_button">Logar</string>
     <string name="login_create_user">
